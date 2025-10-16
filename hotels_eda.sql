@@ -2,11 +2,7 @@
 -- create a revenue column and drop cancelled bookings
 CREATE VIEW revenue_table AS (
 	SELECT
-		h.hotel,
-		h.arrival_date_year,
-		h.arrival_date_month,
-		h.stays_in_week_nights + h.stays_in_weekend_nights AS nights_total,
-		h.adr,
+		h.*,
 		ms.Discount,
 		ROUND(
 			((h.stays_in_week_nights + h.stays_in_weekend_nights) * h.adr) * (1 - ms.Discount)
